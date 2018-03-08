@@ -1,0 +1,39 @@
+/For Question 3/
+
+3.1) What is the difference between Array#filter and Array#map methods?
+
+The Array filter() creates a new array with all elements that passs the test implemented by the provided function.
+
+The Array map() creates a new array with the results of calling a provided function on every element in the calling array. 
+Differences
+  	
+1.  	filter() is used to skip unwanted elements of collection. 
+    	map() is used to modify elements of collection.
+
+2.      filter() expects that function to return Boolean value based on which element will be 
+        skipped or not. 
+        map() will expect that function to return an new collection element.
+
+3.      One is doing something to element, and other is making sure that something is done to all  
+        elements in a collection.     	
+
+
+
+3.2) What does the follow piece of code do, and how?
+       
+       if (arr.map(str => str.length > 0).filter(x => x).length > 0) {
+                  …
+        }
+
+       if arr = ["string1", "string1", "", ..] then on applying map() method it will return an array of all the elements with boolean values generated based on the evaluation of provided function.
+
+       since map() is applied on all the elements even if something is undefined in our case even if empty string is present in our array(arr) it will be applied.
+
+       Now the array with boolean values are passed to filter() method which in turn creates a array of only those elements whose indexes have assigned value means only elements with values defined.
+
+       Hence the values which turned out to be false will be discarded and only boooleans with true values are passed for further evaluation.
+       
+       In the last step the length of the array is calculated and checked if it greater then zero, if it is greater then the expression inside if ststement will be executed else it will come out of the loop.  
+
+
+
