@@ -1,0 +1,79 @@
+/First Question/
+
+What is the difference in how structs and classes are passed into methods?What is safer &why?Explainwithexample of your own?
+
+  •	Structure variables can be passed to a function and returned in a similar way as normal 
+    arguments.
+  •	While passing a class to a function we do not pass the class itself, we actually pass class  
+    instance (i.e object) reference.
+  •	The main difference is that we are passing object reference (i.e address) of class, and any
+    modifications to the object will reflect changes in both the stack space & heap space of the instance. While in case of passing a struct we pass only the values i.eit’s heap space. 
+ 
+   The first case of passing argument by values is safer than making changes to the actual stack space of a variable or instance of a class.
+
+/===================================
+Code for passing struct to a function
+=====================================/
+
+#include <iostream>
+using namespace std;
+struct Person
+{
+char name[50];
+int age;
+float salary;
+};
+
+voiddisplayData(Person);   // Function declaration
+
+int main()
+{
+    Person p;
+
+cout<< "Enter Full name: ";
+cin.get(p.name, 50);
+cout<< "Enter age: ";
+cin>>p.age;
+cout<< "Enter salary: ";
+cin>>p.salary;
+
+    // Function call with structure variable as an argument
+displayData(p);
+
+return 0;
+}
+voiddisplayData(Person p)
+{
+cout<< "\nDisplaying Information." <<endl;
+cout<< "Name: " << p.name <<endl;
+cout<<"Age: " <<p.age<<endl;
+cout<< "Salary: " <<p.salary;
+}
+
+
+/===================================
+Code for passing class to a function
+=====================================/
+
+Example for Class passed to method
+#include <iostream>
+using namespace std;
+
+class MyClass //simple class
+	{
+	  public:
+	     int memberFun(){return 1;} // one public function
+
+	};
+	int fun(MyClass &object) // passing object by reference
+	{
+	  object.memberFun();  // passed object uses its member function
+	}
+
+	int main()
+
+	{
+	    MyClass object;
+
+	    int i = fun(object); // passing object to the funcion fun
+	}
